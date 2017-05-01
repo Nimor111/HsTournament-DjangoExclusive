@@ -12,6 +12,7 @@ from tournament.forms import PlayerModelForm
 from django.contrib.auth.models import User
 
 from django.views import generic
+from django.contrib.auth.hashers import make_password
 
 
 class IndexView(generic.TemplateView):
@@ -36,14 +37,7 @@ class RegisterFormView(generic.View):
     def post(self, request):
         form = PlayerModelForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            rank = form.cleaned_data.get('rank')
-            battle_tag = form.cleaned_data.get('battle_tag')
-            user = User.objects.create_user(username=username, password=password)
-            player = Player(rank=rank, battle_tag=battle_tag)
-            player.user = user
-            player.save()
+            form.save()
             return redirect(reverse_lazy('tournament:index'))
         else:
             return render(request, self.template_name, {'form': form})

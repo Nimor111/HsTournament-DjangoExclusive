@@ -53,7 +53,7 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         player_data = validated_data.pop('player')
         user = User.objects.create_user(**validated_data)
-        player = Player.objects.create(user=user, rank=player_data['rank'])
+        player = Player.objects.create(user=user, rank=player_data['rank'], battle_tag=player_data['battle_tag'])
         for tournament in player_data['tournaments']:
             player.tournaments.add(tournament)
         for deck in player_data['decks']:
@@ -67,6 +67,7 @@ class UserSerializer(serializers.ModelSerializer):
         instance = super(UserSerializer, self).update(instance, validated_data)
         player = get_object_or_404(Player, user=instance)
         player.rank = player_data.get('rank', None)
+        player.battle_tag = player_data.get('battle_tag', None)
         for tournament in player_data.get('tournaments', None):
             if tournament not in player.tournaments.all():
                 player.tournaments.add(tournament)

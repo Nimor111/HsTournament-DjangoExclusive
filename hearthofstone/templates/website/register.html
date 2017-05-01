@@ -19,11 +19,21 @@
                         {% endfor %}
                     {% endfor %}
                 {% endif %}
-                <form method="POST" action="">
+                <form class="form-inline" method="POST" action="">
                     {% csrf_token %}
                     <div class="col-md-6 form-group">
                         {% load crispy_forms_tags %}
-                        {{ form.as_p }}
+                        {% for field in form %}
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="formGroupExampleInput">{{ field.label }}</label>
+                            </div>
+                            <div class="col-sm-4">
+                                {{ field }}
+                            </div>
+                        </div>
+                            <br />
+                        {% endfor %}
                         <button class="btn btn-primary" type="submit">Register</button>
                     </div>
                 </form>

@@ -12,7 +12,9 @@
             <form method="POST" action="">
                 {% csrf_token %}
                 <div class="form-group">
-                    {% load crispy_forms_tags %}
+                    {% if user %}
+                        {{ user.username }} 
+                    {% endif %}
                     {{ form.as_p }}
                     <br>
                     <button class="btn btn-primary" type="submit">Login</button>

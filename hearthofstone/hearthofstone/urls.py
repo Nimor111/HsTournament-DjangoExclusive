@@ -13,6 +13,6 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, {'template_name': 'website/login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^register/$', RegisterFormView.as_view(), name='register'),
-    url(r'^', include('tournament.urls', namespace='tournament')),
     url(r'^admin/', admin.site.urls),
+    url(r'^', include('tournament.urls', namespace='tournament')),
 ] + staticfiles_urlpatterns()

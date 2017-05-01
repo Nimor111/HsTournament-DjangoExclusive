@@ -12,14 +12,12 @@ class PlayerModelForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'password1', 'password2', 'rank', 'battle_tag')
+        fields = ('username', 'password1', 'password2', 'email', 'rank', 'battle_tag')
 
-    # def save(self, commit=True):
-    #     # import ipdb; ipdb.set_trace()
-    #     user = super(UserCreationForm, self).save(commit=False)
-    #     if commit():
-    #         user.save()
-    #     player = Player(rank=self.cleaned_data['rank'], battle_tag=self.cleaned_data['battle_tag'])
-    #     player.user = user
-    #     player.save()
-    #     return user
+    def save(self, commit=True):
+        user = super(PlayerModelForm, self).save(commit=False)
+        # import ipdb; ipdb.set_trace()
+        if commit:
+            user.save()
+            player = Player.objects.create(user=user, rank=self.cleaned_data['rank'], battle_tag=self.cleaned_data['battle_tag'])
+        return user
