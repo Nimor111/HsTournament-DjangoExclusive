@@ -2,9 +2,9 @@ body {
       font: 400 15px Lato, sans-serif;
       line-height: 1.8;
       color: #FFFFFF;
-      background-color: #654E21;
-      background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-25.jpg) no-repeat; 
-      background-size: cover;
+      background-color: #000;
+      /* background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-25.jpg); */
+      /* background-size: cover; */
 }
   h2 {
       font-size: 24px;
@@ -32,7 +32,7 @@ body {
       padding: 60px 50px;
   }
   .bg-grey {
-      background-color: #654E21;
+      background-color: #000;
   }
   .logo-small {
       color: #f4511e;
