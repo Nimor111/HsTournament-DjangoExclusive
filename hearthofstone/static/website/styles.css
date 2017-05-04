@@ -1,8 +1,11 @@
- body {
+body {
       font: 400 15px Lato, sans-serif;
       line-height: 1.8;
-      color: #818181;
-  }
+      color: #FFFFFF;
+      background-color: #654E21;
+      background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-25.jpg) no-repeat; 
+      background-size: cover;
+}
   h2 {
       font-size: 24px;
       text-transform: uppercase;
@@ -13,12 +16,14 @@
   h4 {
       font-size: 19px;
       line-height: 1.375em;
-      color: #303030;
+      color: #000;
       font-weight: 400;
       margin-bottom: 30px;
   }  
   .jumbotron {
-      background-color: #003366;
+      /* /1* background-color: #003366; *1/ */
+      background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-25.jpg);
+      /* background-image: none; */
       color: #fff;
       padding: 100px 25px;
       font-family: Montserrat, sans-serif;
@@ -27,7 +32,7 @@
       padding: 60px 50px;
   }
   .bg-grey {
-      background-color: #f6f6f6;
+      background-color: #654E21;
   }
   .logo-small {
       color: #f4511e;
@@ -71,6 +76,7 @@
       border: 1px solid #f4511e; 
       border-radius:0 !important;
       transition: box-shadow 0.5s;
+      background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-2.png);
   }
   .panel:hover {
       box-shadow: 5px 0px 40px rgba(0,0,0, .2);
@@ -83,7 +89,7 @@
   .panel-heading {
       color: #f4511e !important;
       background-color: #f4511e !important;
-      background-image: none;
+      background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-2.png);
       padding: 25px;
       border-bottom: 1px solid transparent;
       border-top-left-radius: 0px;
@@ -108,8 +114,10 @@
   }
   .navbar {
       margin-bottom: 0;
-      background-image: none;
-      background-color: #003366;
+      background: rgba(0,0,0,0.8);
+      opacity: 0.5;
+      /* background-color: #003366; */
+      /* background-color: transparent; */
       z-index: 9999;
       border: 0;
       font-size: 12px !important;
@@ -128,6 +136,7 @@
   .navbar-default .navbar-toggle {
       border-color: transparent;
       color: #fff !important;
+      /* color: transparent !important; */
   }
   footer .glyphicon {
       font-size: 20px;
