@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 
 from rest_framework import generics
@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 
 from django.views import generic
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class IndexView(generic.TemplateView):
@@ -43,6 +44,16 @@ class RegisterFormView(generic.View):
         else:
             return render(request, self.template_name, {'form': form})
         return render(request, self.template_name, {'form': form})
+
+
+class TournamentDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Tournament
+    template_name = 'website/tournament_detail.html'
+    login_url = reverse_lazy('login')
+    context_object_name = 'tournament'
+
+    def get_object(self):
+        return get_object_or_404(Tournament, pk=self.kwargs['pk'])
 
 
 # API views

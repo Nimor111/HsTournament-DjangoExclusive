@@ -15,6 +15,7 @@ class Deck(models.Model):
 
 class Tournament(models.Model):
     name = models.CharField(max_length=256)
+    description = models.TextField()
     active = models.BooleanField(default=True)
     start_time = models.DateTimeField(default=timezone.now)
     end_time = models.DateTimeField(null=True, blank=True)

@@ -18,6 +18,7 @@ apiurlpatterns = [
 
 regularurlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'tournament/(?P<pk>[0-9]+)', views.TournamentDetailView.as_view(), name='tournament-detail'),
 ]
 
 urlpatterns = apiurlpatterns + regularurlpatterns
