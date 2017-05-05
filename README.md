@@ -1,8 +1,10 @@
 # A system to manage a HS tournament, or multiple ones.
+This one is Django exclusively.
+
 # TODO
-` add user profile page `
-` add tournament sign-up page `
-` add deck detail view `
-` available spots to be calculated ` 
-` add deck create view `
-` anything I invent along the way `
+1. add user profile page
+2. add tournament sign-up page
+3. add deck detail view
+4. available spots to be calculated 
+5. add deck create view
+6. anything I invent along the way
