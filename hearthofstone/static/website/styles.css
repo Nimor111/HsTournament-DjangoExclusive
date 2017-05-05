@@ -17,7 +17,7 @@
   h4 {
       font-size: 19px;
       line-height: 1.375em;
-      color: #000;
+      color: #fff;
       font-weight: 400;
       margin-bottom: 30px;
   }
@@ -27,7 +27,7 @@
   .jumbotron {
       opacity: 0.6;
       background-image: none;
-      color: olive;
+      color: #000000;
       padding: 100px 25px;
       font-family: Montserrat, sans-serif;
   }
@@ -48,8 +48,9 @@
   .thumbnail {
       padding: 0 0 15px 0;
       border: none;
-      border-radius: 0;
+      border-radius: 2;
       color: #000;
+      opacity: 0.7;
   }
   .thumbnail img {
       width: 100%;
@@ -77,24 +78,25 @@
       font-style: normal;
   }
   .panel {
-      border: 1px solid #f4511e; 
+      border: 1px solid none; 
       border-radius:0 !important;
       transition: box-shadow 0.5s;
       /* background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-2.png); */
-      background-color: olive;
+      background-color: #fff;
+      opacity: 0.7;
   }
   .panel:hover {
       box-shadow: 10px 0px 40px rgba(0,0,0, .2);
   }
   .panel-footer .btn:hover {
       border: 1px solid #f4511e;
-      background-color: #000 !important;
+      background-color: #fff !important;
+      opacity: 0.7;
       color: #f4511e;
   }
   .panel-heading {
-      color: #f4511e !important;
+      color: #000000 !important;
       background-color: #f4511e !important;
-      background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-2.png);
       padding: 25px;
       border-bottom: 1px solid transparent;
       border-top-left-radius: 0px;
@@ -107,6 +109,7 @@
   }
   .panel-footer h3 {
       font-size: 32px;
+      color: #000;
   }
   .panel-footer h4 {
       color: #aaa;
@@ -116,6 +119,9 @@
       margin: 15px 0;
       background-color: #f4511e;
       color: #fff;
+  }
+  .panel-body {
+      color: #000;
   }
   .navbar {
       margin-bottom: 0;
@@ -146,7 +152,7 @@
   footer .glyphicon {
       font-size: 20px;
       margin-bottom: 20px;
-      color: #f4511e;
+      color: #fff;
   }
   .slideanim {visibility:hidden;}
   .slide {
@@ -155,6 +161,28 @@
       animation-duration: 1s;
       -webkit-animation-duration: 1s;
       visibility: visible;
+  }
+  .login {
+      color: #000;
+  }
+  .register {
+      height: 800px;
+      width: auto;
+      color: #000;
+  }
+  .t-detail {
+      width: 1250px;
+      text-align: center;
+  }
+  .footer-cp {
+      width: auto;
+      height: 30px;
+      background-color: #fff;
+      color: #000;
+      opacity: 0.7;
+      border: 1px solid #fff; 
+      transition: box-shadow 0.5s;
+      margin-bottom: -25px;
   }
   @keyframes slide {
     0% {

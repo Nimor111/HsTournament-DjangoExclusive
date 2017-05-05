@@ -36,22 +36,28 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
           <li><a href="{% url 'tournament:index' %}"><span class="glyphicon glyphicon-home">INDEX</span></a></li>
-          <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-user">LOGIN</span></a></li>
           <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-list-alt">REGISTER</span></a></li>
-          <li><a href="#portfolio"><span class="glyphicon glyphicon-tasks">DECKS</span></a></li>
-          <li><a href="#pricing"><span class="glyphicon glyphicon-tags">TOURNAMENTS</span></a></li>
+          <li><a href="#decks"><span class="glyphicon glyphicon-tasks">DECKS</span></a></li>
+          <li><a href="#tournaments"><span class="glyphicon glyphicon-tags">TOURNAMENTS</span></a></li>
           <li><a href="#contact"><span class="glyphicon glyphicon-forward">CONTACT</span></a></li>
+          {% if not user.is_authenticated %}
+          <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-user">LOGIN</span></a></li>
+          {% else %}
+          <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user">HELLO, {{ user.username }} (LOGOUT)</span></a></li>
+          {% endif %}
       </ul>
     </div>
   </div>
 </nav>
     {% block body %}
     {% endblock body %}
-<footer class="container-fluid text-center">
+<footer class="container-fluid footer text-center">
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
-  <p>Application made by Nimor/TheBlight, MOB veteran, theme idea from w3schools.</p>
+  <div class="panel panel-default footer-cp">
+      <p>Application made by Nimor/TheBlight, MOB veteran, theme idea from w3schools.</p>
+  </div>
 </footer>
 
 </body>

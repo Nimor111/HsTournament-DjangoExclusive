@@ -6,4 +6,29 @@ Tournament {{ tournament.pk }}
 
 {% block body %}
     <div class="container-fluid">
+        <div class="row top"></div>
+            <div class="row main-content">
+                <div class="col-md-4">
+                    <div class="jumbotron t-detail">
+                        <h1>Players, welcome to {{ tournament.name }}!</h1>
+                        <h2><span style="color: #000;">Description and rules:</span></h2>
+                        {% if tournament.description %}
+                        <p>{{ tournament.description }}</p>
+                        {% else %}
+                        <p> N/A </p>
+                        {% endif %}
+                        <p>Status: 
+                        {% if tournament.active %}
+                        Ongoing 
+                        {% else %}
+                        Finished
+                        {% endif %}</p>
+                        <p>Start date: {{ tournament.start_time }}</p>
+                        <p>End date: {% if tournament.end_time %}{{ tournament.end_time }}
+                        {% else %}N/A{% endif %}</p>
+                        <p>Max number of players: {{ tournament.max_players }}</p>
+                    </div>
+                </div>
+            </div>
+    </div>
 {% endblock body %}

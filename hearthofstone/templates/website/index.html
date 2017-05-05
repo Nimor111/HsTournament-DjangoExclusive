@@ -14,8 +14,9 @@
 </head>
 {% block body %}
 <div class="jumbotron text-center">
-  <h1>Hearthstone</h1> 
-  <p>Fun and interactive</p> 
+    <p>Not a member? <a href="{% url 'register' %}">Register now!</a></p>
+  <h1>Hearthstone tournaments</h1> 
+  <p>We're fun and interactive!</p> 
   <form>
     <div class="input-group">
       <input type="email" class="form-control" size="50" placeholder="Email Address" required>
@@ -37,7 +38,7 @@
 </div>
 
 <!-- Container (Portfolio Section) -->
-<div id="portfolio" class="container-fluid text-center bg-grey">
+<div id="decks" class="container-fluid text-center bg-grey">
   <h2>Decks</h2><br>
   <h4>Some of the decks that are being played here</h4>
   <div class="row text-center slideanim">
@@ -47,8 +48,7 @@
           {% if deck.screenshot %}
           <img src="{{ deck.screenshot.url }}" alt="N/A" width="400" height="300" class="img-responsive" />
           {% endif %}
-        <p><strong>{{ deck.name }}</strong></p>
-        <p>Yes, we built Paris</p>
+        <h3><strong>{{ deck.name }}</strong></h3>
       </div>
     </div>
     {% endfor %}
@@ -89,16 +89,17 @@
 </div>
 
 <!-- Container (Pricing Section) -->
-<div id="pricing" class="container-fluid">
+<div id="tournaments" class="container-fluid">
   <div class="text-center">
-    <h2>Pricing</h2>
-    <h4>Choose a payment plan that works for you</h4>
+    <h2>Tournaments</h2>
+    <h4><strong>See our active tournaments!</strong></h4>
   </div>
   <div class="row slideanim">
-    <div class="col-sm-4 col-xs-12">
+    {% for tournament in active_tournaments %}
+    <div class="col-sm-6 col-xs-12">
       <div class="panel panel-default text-center">
         <div class="panel-heading">
-          <h1>Basic</h1>
+            <h1>{{ tournament.name }}</h1>
         </div>
         <div class="panel-body">
           <p><strong>20</strong> Lorem</p>
@@ -112,46 +113,9 @@
           <h4>per month</h4>
           <button class="btn btn-lg">Sign Up</button>
         </div>
-      </div>      
-    </div>     
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1>Pro</h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>50</strong> Lorem</p>
-          <p><strong>25</strong> Ipsum</p>
-          <p><strong>10</strong> Dolor</p>
-          <p><strong>5</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <h3>$29</h3>
-          <h4>per month</h4>
-          <button class="btn btn-lg">Sign Up</button>
-        </div>
-      </div>      
-    </div>       
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1>Premium</h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>100</strong> Lorem</p>
-          <p><strong>50</strong> Ipsum</p>
-          <p><strong>25</strong> Dolor</p>
-          <p><strong>10</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <h3>$49</h3>
-          <h4>per month</h4>
-          <button class="btn btn-lg">Sign Up</button>
-        </div>
-      </div>      
-    </div>    
+      </div>
+    </div>
+    {% endfor %}
   </div>
 </div>
 

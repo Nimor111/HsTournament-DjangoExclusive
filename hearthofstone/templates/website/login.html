@@ -8,18 +8,18 @@
 <center>
     <div class="container">
         <div class="row">
+            <div class="jumbotron">
             <h1>Login: </h1>
             <form method="POST" action="">
                 {% csrf_token %}
-                <div class="form-group">
-                    {% if user %}
-                        {{ user.username }} 
-                    {% endif %}
+                <div class="form-group login">
                     {{ form.as_p }}
                     <br>
                     <button class="btn btn-primary" type="submit">Login</button>
                 </div>
             </form>
+            <p>Not a member? <a href="{% url 'register' %}">Register now!</a></p>
+            </div>
         </div>
     </div>
 </center>

@@ -13,7 +13,7 @@ from tournament.views import RegisterFormView
 urlpatterns = [
     url(r'^api-token-auth/$', obtain_jwt_token, name='obtain-token'),
     url(r'^login/$', auth_views.login, {'template_name': 'website/login.html'}, name='login'),
-    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/login'}, name='logout'),
     url(r'^register/$', RegisterFormView.as_view(), name='register'),
     url(r'^admin/', admin.site.urls),
     url(r'^', include('tournament.urls', namespace='tournament')),

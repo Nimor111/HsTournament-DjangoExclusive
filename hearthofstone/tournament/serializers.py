@@ -15,7 +15,7 @@ class DeckSerializer(serializers.ModelSerializer):
 class TournamentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tournament
-        fields = ('name', 'active', 'max_players', 'start_time', 'end_time')
+        fields = ('name', 'description', 'active', 'max_players', 'start_time', 'end_time')
 
     def to_representation(self, instance):
         data = super(TournamentSerializer, self).to_representation(instance)

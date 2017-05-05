@@ -7,9 +7,10 @@
 {% block body %}
 <div class='container'>
     <div class='row'>
-        <div class="col-md-8 pull-right no-padding">
-            <div class="col-md-12">
-                <h3>Register an account!</h3>
+        <div class="jumbotron register">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+                <h1>Register an account!</h1>
                 {% if form.errors %}
                     {% for field in form %}
                         {% for error in field.errors %}
@@ -28,6 +29,7 @@
                             <div class="col-sm-4">
                                 <label for="formGroupExampleInput">{{ field.label }}</label>
                             </div>
+                            <div class="col-sm-4"></div>
                             <div class="col-sm-4">
                                 {{ field }}
                             </div>
@@ -38,6 +40,7 @@
                     </div>
                 </form>
             </div>
+            <div class="col-md-4"></div>
         </div>
     </div>
 </div>
