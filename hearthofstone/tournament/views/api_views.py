@@ -1,19 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy
-
 from rest_framework import generics
 
 from tournament.models import Deck, Bracket, Match, Player, Tournament
 from tournament.serializers import (DeckSerializer, BracketSerializer,
                                     MatchSerializer, PlayerSerializer,
                                     TournamentSerializer, UserSerializer)
-from tournament.forms import PlayerModelForm
-
 from django.contrib.auth.models import User
-
-from django.views import generic
-from django.contrib.auth.hashers import make_password
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # API views
