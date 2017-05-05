@@ -1,17 +1,18 @@
-body {
+  body {
       font: 400 15px Lato, sans-serif;
       line-height: 1.8;
       color: #FFFFFF;
       background-color: #000;
-      /* background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-25.jpg); */
-      /* background-size: cover; */
-}
+      background-image: url(http://us.battle.net/hearthstone/static/images/media/wallpapers/tavern-brawl_wallpaper1920x1200.jpg);
+      background-size: cover;
+  }
   h2 {
       font-size: 24px;
       text-transform: uppercase;
-      color: #303030;
+      color: #fff;
       font-weight: 600;
       margin-bottom: 30px;
+      font-family: inherit;
   }
   h4 {
       font-size: 19px;
@@ -19,12 +20,14 @@ body {
       color: #000;
       font-weight: 400;
       margin-bottom: 30px;
+  }
+  #services {
+      text-align: center;
   }  
   .jumbotron {
-      /* /1* background-color: #003366; *1/ */
-      background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-25.jpg);
-      /* background-image: none; */
-      color: #fff;
+      opacity: 0.6;
+      background-image: none;
+      color: olive;
       padding: 100px 25px;
       font-family: Montserrat, sans-serif;
   }
@@ -32,7 +35,7 @@ body {
       padding: 60px 50px;
   }
   .bg-grey {
-      background-color: #000;
+      background-color: none;
   }
   .logo-small {
       color: #f4511e;
@@ -46,6 +49,7 @@ body {
       padding: 0 0 15px 0;
       border: none;
       border-radius: 0;
+      color: #000;
   }
   .thumbnail img {
       width: 100%;
@@ -76,14 +80,15 @@ body {
       border: 1px solid #f4511e; 
       border-radius:0 !important;
       transition: box-shadow 0.5s;
-      background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-2.png);
+      /* background-image: url(http://hdwallpapersbuzz.com/wp-content/uploads/2017/02/hearthstone-wallpaper-images-2.png); */
+      background-color: olive;
   }
   .panel:hover {
-      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+      box-shadow: 10px 0px 40px rgba(0,0,0, .2);
   }
   .panel-footer .btn:hover {
       border: 1px solid #f4511e;
-      background-color: #fff !important;
+      background-color: #000 !important;
       color: #f4511e;
   }
   .panel-heading {

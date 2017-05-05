@@ -9,7 +9,7 @@ from datetime import datetime
 class DeckSerializer(serializers.ModelSerializer):
     class Meta:
         model = Deck
-        fields = ('name', )
+        fields = ('name', 'screenshot')
 
 
 class TournamentSerializer(serializers.ModelSerializer):

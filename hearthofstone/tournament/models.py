@@ -7,6 +7,7 @@ from tournament.query import TournamentQuerySet
 
 class Deck(models.Model):
     name = models.CharField(max_length=30)
+    screenshot = models.ImageField(upload_to='screens', null=True, blank=True)
 
     def __str__(self):
         return self.name

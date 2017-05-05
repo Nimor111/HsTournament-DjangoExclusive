@@ -22,6 +22,7 @@ class IndexView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
 
         context['active_tournaments'] = Tournament.objects.get_active_tournaments()
+        context['random_decks'] = Deck.objects.all()[:3]
         return context
 
 
