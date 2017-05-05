@@ -1,5 +1,8 @@
-# A system to manage a HS tournament, or multiple ones.
-This one is Django exclusively.
+# Hearthstone tournaments - We are fun and interactive!
+
+### A system to manage a HS tournament, or multiple ones.
+
+#### This one is Django exclusively.
 
 # TODO
 1. add user profile page
