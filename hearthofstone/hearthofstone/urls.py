@@ -8,7 +8,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 import django.contrib.auth.views as auth_views
 # from tournament.views import RegisterFormView
-from tournament.views import RegisterFormView
+from tournament.views.main_views import RegisterFormView
 
 urlpatterns = [
     url(r'^api-token-auth/$', obtain_jwt_token, name='obtain-token'),

@@ -113,6 +113,7 @@ class TournamentAPITests(APITestCase):
     def test_can_edit_tournament(self):
         data = {
             'name': 'Ahyperawesometournament',
+            'description': 'Ahyperawesomedescription',
             'active': self.tournament.active,
             'start_time': self.tournament.start_time,
             'end_time': self.tournament.end_time,
@@ -131,6 +132,7 @@ class TournamentAPITests(APITestCase):
         self.assertEqual(Tournament.objects.count(), 2)
         data = {
             'name': 'Ahyperawesometournament',
+            'description': 'Ahyperawesomedescription',
             'active': True,
             'start_time': datetime.now(),
             'end_time': datetime.now(),
