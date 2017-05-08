@@ -15,6 +15,9 @@ from django.views import generic
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+# TODO figure this out
+# from tournament.mixins import NotLoginRequiredMixin
+
 
 class IndexView(generic.TemplateView):
     template_name = 'website/index.html'
@@ -33,6 +36,8 @@ class RegisterFormView(generic.View):
     success_url = '/'
 
     def get(self, request):
+        if request.user.is_authenticated():
+            return redirect('tournament:index')
         form = self.form_class()
         return render(request, self.template_name, {'form': form})
 

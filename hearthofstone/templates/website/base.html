@@ -36,7 +36,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
           <li><a href="{% url 'tournament:index' %}"><span class="glyphicon glyphicon-home">INDEX</span></a></li>
+          {% if not user.is_authenticated %}
           <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-list-alt">REGISTER</span></a></li>
+          {% endif %}
           <li><a href="#decks"><span class="glyphicon glyphicon-tasks">DECKS</span></a></li>
           <li><a href="#tournaments"><span class="glyphicon glyphicon-tags">TOURNAMENTS</span></a></li>
           <li><a href="#contact"><span class="glyphicon glyphicon-forward">CONTACT</span></a></li>

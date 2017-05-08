@@ -15,6 +15,7 @@
 {% block body %}
 <div class="jumbotron text-center">
     {% if not user.is_authenticated %}
+        <p>Are you a member? <a href="{% url 'login' %}">Login!</a></p>
         <p>Not a member? <a href="{% url 'register' %}">Register now!</a></p>
     {% endif %}
   <h1>Hearthstone tournaments</h1> 
