@@ -15,6 +15,8 @@ from django.views import generic
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from tournament.mixins import ProfileObjectMixin
+
 # TODO figure this out
 # from tournament.mixins import NotLoginRequiredMixin
 
@@ -49,6 +51,14 @@ class RegisterFormView(generic.View):
         else:
             return render(request, self.template_name, {'form': form})
         return render(request, self.template_name, {'form': form})
+
+
+class ProfileUpdateView(ProfileObjectMixin, generic.UpdateView):
+    """Form for editing a user's profile"""
+    template_name = 'website/user_profile.html'
+
+    def get_success_url(self):
+        return reverse_lazy("profile", kwargs={'pk': self.kwargs.get('pk')})
 
 
 class TournamentDetailView(LoginRequiredMixin, generic.DetailView):
