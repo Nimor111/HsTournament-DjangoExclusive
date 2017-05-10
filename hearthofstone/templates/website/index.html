@@ -109,7 +109,10 @@
             <p>Tournament starts on {{ tournament.start_time }}</p>
         </div>
         <div class="panel-footer">
-            <button class="btn btn-lg">Sign Up</button>
+            <form method="POST" action="{% url 'tournament:tournament-detail' tournament.pk %}">
+                {% csrf_token %}
+                <button class="btn btn-lg">Sign Up</button>
+            </form>
         </div>
       </div>
     </div>
