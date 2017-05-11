@@ -25,6 +25,17 @@ class NotLoginRequiredMixin(BaseUserPassesTestMixin):
         return True and super().test_func()
 
 
+class IsSuperUserMixin(BaseUserPassesTestMixin):
+
+    raise_exception = True
+
+    def test_func(self):
+        if not self.request.user.is_superuser:
+            return False
+
+        return True and super().test_func()
+
+
 class ProfileObjectMixin(SingleObjectMixin):
     model = Player
     fields = ('rank', 'battle_tag')

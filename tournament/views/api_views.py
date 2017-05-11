@@ -6,53 +6,55 @@ from tournament.serializers import (DeckSerializer, BracketSerializer,
                                     TournamentSerializer, UserSerializer)
 from django.contrib.auth.models import User
 
+from tournament.mixins import IsSuperUserMixin
+
 
 # API views
-class DeckList(generics.ListCreateAPIView):
+class DeckList(IsSuperUserMixin, generics.ListCreateAPIView):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
 
 
-class DeckDetail(generics.RetrieveUpdateDestroyAPIView):
+class DeckDetail(IsSuperUserMixin, generics.RetrieveUpdateDestroyAPIView):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
 
 
-class MatchList(generics.ListCreateAPIView):
+class MatchList(IsSuperUserMixin, generics.ListCreateAPIView):
     queryset = Match.objects.all()
     serializer_class = MatchSerializer
 
 
-class MatchDetail(generics.RetrieveUpdateDestroyAPIView):
+class MatchDetail(IsSuperUserMixin, generics.RetrieveUpdateDestroyAPIView):
     queryset = Match.objects.all()
     serializer_class = MatchSerializer
 
 
-class BracketList(generics.ListCreateAPIView):
+class BracketList(IsSuperUserMixin, generics.ListCreateAPIView):
     queryset = Bracket.objects.all()
     serializer_class = BracketSerializer
 
 
-class BracketDetail(generics.RetrieveUpdateDestroyAPIView):
+class BracketDetail(IsSuperUserMixin, generics.RetrieveUpdateDestroyAPIView):
     queryset = Bracket.objects.all()
     serializer_class = BracketSerializer
 
 
-class PlayerList(generics.ListCreateAPIView):
+class PlayerList(IsSuperUserMixin, generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class PlayerDetail(generics.RetrieveUpdateDestroyAPIView):
+class PlayerDetail(IsSuperUserMixin, generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class TournamentList(generics.ListCreateAPIView):
+class TournamentList(IsSuperUserMixin, generics.ListCreateAPIView):
     queryset = Tournament.objects.all()
     serializer_class = TournamentSerializer
 
 
-class TournamentDetail(generics.RetrieveUpdateDestroyAPIView):
+class TournamentDetail(IsSuperUserMixin, generics.RetrieveUpdateDestroyAPIView):
     queryset = Tournament.objects.all()
     serializer_class = TournamentSerializer
