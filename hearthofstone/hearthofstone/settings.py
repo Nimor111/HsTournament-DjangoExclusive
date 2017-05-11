@@ -17,6 +17,20 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tournament',
+        'USER': 'tournamentuser',
+        'PASSWORD': 'tournamentpass',
+        'HOST': 'localhost',
+        'TEST': {
+            'NAME': 'test_hearthofstone',
+            'USER': 'tournamentuser',
+        },
+        'PORT': '',
+    }
+}
 
 # Application definition
 
@@ -118,6 +132,11 @@ STATICFILES_DIRS = (
 
 LOGIN_REDIRECT_URL = '/'
 
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
 DATABASES['default'] = dj_database_url.config()
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -125,8 +144,3 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 DEBUG = False
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
