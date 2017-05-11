@@ -23,16 +23,16 @@ except ImportError:
     pass
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8non3su3bedr4',
-        'USER': 'vcbzgcazjomuxx',
-        'PASSWORD': '5e6497f5f582c19c3c933de834afba02dcfff2cfade82c52423528cda023858d',
-        'HOST': 'ec2-23-21-227-73.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd8non3su3bedr4',
+#         'USER': 'vcbzgcazjomuxx',
+#         'PASSWORD': '5e6497f5f582c19c3c933de834afba02dcfff2cfade82c52423528cda023858d',
+#         'HOST': 'ec2-23-21-227-73.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 # Application definition
 
@@ -134,7 +134,8 @@ STATICFILES_DIRS = (
 
 LOGIN_REDIRECT_URL = '/'
 
-
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 # DATABASES['default'] = dj_database_url.config()
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
