@@ -58,7 +58,7 @@ class ProfileUpdateView(ProfileObjectMixin, generic.UpdateView):
     template_name = 'website/user_profile.html'
 
     def get_success_url(self):
-        return reverse_lazy("profile", kwargs={'pk': self.kwargs.get('pk')})
+        return reverse_lazy("tournament:index")
 
 
 class TournamentDetailView(LoginRequiredMixin, generic.DetailView):

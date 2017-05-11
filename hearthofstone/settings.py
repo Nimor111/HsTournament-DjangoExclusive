@@ -17,10 +17,10 @@ SECRET_KEY = 'xgmvt$03wb5tdjqgnxh9wdk@^)2yfveg&i@mv(f6=k@wo@$q)!'
 
 ALLOWED_HOSTS = []
 
-# try:
-#     from .local_settings import *
-# except ImportError:
-#     pass
+try:
+    from .local_settings import *
+except ImportError:
+    pass
 
 
 DATABASES = {

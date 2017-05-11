@@ -184,6 +184,9 @@
       transition: box-shadow 0.5s;
       margin-bottom: -25px;
   }
+  .profile {
+    height: 500px;
+  }
   @keyframes slide {
     0% {
       opacity: 0;
