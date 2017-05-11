@@ -13,22 +13,24 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'xgmvt$03wb5tdjqgnxh9wdk@^)2yfveg&i@mv(f6=k@wo@$q)!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
+
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tournament',
-        'USER': 'tournamentuser',
-        'PASSWORD': 'tournamentpass',
-        'HOST': 'localhost',
-        'TEST': {
-            'NAME': 'test_hearthofstone',
-            'USER': 'tournamentuser',
-        },
-        'PORT': '',
+        'NAME': 'd8non3su3bedr4',
+        'USER': 'vcbzgcazjomuxx',
+        'PASSWORD': '5e6497f5f582c19c3c933de834afba02dcfff2cfade82c52423528cda023858d',
+        'HOST': 'ec2-23-21-227-73.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -132,12 +134,8 @@ STATICFILES_DIRS = (
 
 LOGIN_REDIRECT_URL = '/'
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
-DATABASES['default'] = dj_database_url.config()
+# DATABASES['default'] = dj_database_url.config()
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
