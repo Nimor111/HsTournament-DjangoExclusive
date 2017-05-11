@@ -1,1 +1,1 @@
-web: gunicorn hearthofstone.wsgi
+web: gunicorn hearthofstone.hearthofstone.wsgi
