@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 
 from django.views.generic.detail import SingleObjectMixin
 from django.utils.decorators import method_decorator
@@ -45,7 +46,7 @@ class ProfileObjectMixin(SingleObjectMixin):
         try:
             return self.request.user.player
         except Player.DoesNotExist:
-            raise NotImplemented("No profile, I guess.")
+            redirect(reverse_lazy('error404'))
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):

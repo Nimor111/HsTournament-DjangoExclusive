@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 import django.contrib.auth.views as auth_views
-from tournament.views.main_views import RegisterFormView, ProfileUpdateView
+from tournament.views.main_views import RegisterFormView, ProfileUpdateView, Error404
 
 urlpatterns = [
     url(r'^api-token-auth/$', obtain_jwt_token, name='obtain-token'),
@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^register/$', RegisterFormView.as_view(), name='register'),
     url(r'^profile/(?P<pk>[0-9]+)', ProfileUpdateView.as_view(), name='profile'),
     url(r'^admin/', admin.site.urls),
+    url(r'^error404/', Error404.as_view(), name='error404'),
     url(r'^', include('tournament.urls', namespace='tournament')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + staticfiles_urlpatterns() + \
     static(settings.STATIC_ROOT, document_root=settings.STATIC_ROOT)

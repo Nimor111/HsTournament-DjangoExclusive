@@ -69,3 +69,7 @@ class TournamentDetailView(LoginRequiredMixin, generic.DetailView):
 
     def get_object(self):
         return get_object_or_404(Tournament, pk=self.kwargs['pk'])
+
+
+class Error404(generic.TemplateView):
+    template_name = 'website/error404/html'
