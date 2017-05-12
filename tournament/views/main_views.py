@@ -53,7 +53,7 @@ class RegisterFormView(generic.View):
         return render(request, self.template_name, {'form': form})
 
 
-class ProfileUpdateView(ProfileObjectMixin, generic.UpdateView):
+class ProfileUpdateView(LoginRequiredMixin, ProfileObjectMixin, generic.UpdateView):
     """Form for editing a user's profile"""
     template_name = 'website/user_profile.html'
 

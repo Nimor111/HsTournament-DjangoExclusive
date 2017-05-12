@@ -41,7 +41,7 @@ class Player(models.Model):
     rank = models.SmallIntegerField(null=True, blank=True)
     decks = models.ManyToManyField(Deck, related_name='deck_players', blank=True)
     matches = models.ManyToManyField(Match, related_name='match_players', blank=True)
-    battle_tag = models.CharField(max_length=256, default='#nameXXXX')
+    battle_tag = models.CharField(max_length=256)
 
     def __str__(self):
         return self.user.username

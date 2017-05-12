@@ -46,7 +46,9 @@
           <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-user">LOGIN</span></a></li>
           {% else %}
           <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user">HELLO, {{ user.username }} (LOGOUT)</span></a></li>
-          <li><a href="{% url 'profile' user.pk %}"><span class="glyphicon glyphicon-user">Profile</span></a></li>
+              {% if user.player.pk %}
+              <li><a href="{% url 'profile' user.player.pk %}"><span class="glyphicon glyphicon-user">Profile</span></a></li>
+              {% endif %}
           {% endif %}
       </ul>
     </div>
