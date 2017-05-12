@@ -81,7 +81,7 @@ class TournamentSignUpView(LoginRequiredMixin, generic.View):
     template_name = 'website/tournament_detail.html'
 
     def get_success_url(self):
-        return reverse_lazy('tournament:index')
+        return reverse_lazy('tournament:tournament-detail', kwargs={'pk': self.kwargs.get('pk')})
 
     def post(self, *args, **kwargs):
         tournament = self.model.objects.get(pk=kwargs.get('pk'))
