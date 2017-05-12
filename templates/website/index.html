@@ -105,7 +105,7 @@
             <h1>{{ tournament.name }}</h1>
         </div>
         <div class="panel-body">
-            <p>Hurry up! There's only {{ tournament.max_players }} spots left!</p>
+            <p>Hurry up! There's only {{ tournament.get_remaining_spots }} spots left!</p>
             <p>Tournament starts on {{ tournament.start_time }}</p>
         </div>
         <div class="panel-footer">

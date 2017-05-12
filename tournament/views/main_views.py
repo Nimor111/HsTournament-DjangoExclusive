@@ -70,6 +70,27 @@ class TournamentDetailView(LoginRequiredMixin, generic.DetailView):
     def get_object(self):
         return get_object_or_404(Tournament, pk=self.kwargs['pk'])
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current_players_count'] = self.model.objects.get(pk=self.kwargs['pk']).tournament_players.count()
+        return context
+
+
+class TournamentSignUpView(LoginRequiredMixin, generic.View):
+    model = Tournament
+    template_name = 'website/tournament_detail.html'
+
+    def get_success_url(self):
+        return reverse_lazy('tournament:index')
+
+    def post(self, *args, **kwargs):
+        tournament = self.model.objects.get(pk=kwargs.get('pk'))
+        self.request.user.player.tournaments.add(tournament)
+        self.request.user.player.save()
+        self.request.user.save()
+
+        return redirect(self.get_success_url())
+
 
 class Error404(generic.TemplateView):
     template_name = 'website/error404/html'

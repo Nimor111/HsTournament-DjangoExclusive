@@ -27,6 +27,11 @@ Tournament {{ tournament.pk }}
                         <p>End date: {% if tournament.end_time %}{{ tournament.end_time }}
                         {% else %}N/A{% endif %}</p>
                         <p>Max number of players: {{ tournament.max_players }}</p>
+                        <p>Current number of players: {{ current_players_count }}</p>
+                        <form method="POST" action="{% url 'tournament:tournament-signup' tournament.pk %}">
+                            {% csrf_token %}
+                            <button class="btn btn-danger">Sign-up</button>
+                        </form>
                     </div>
                 </div>
             </div>

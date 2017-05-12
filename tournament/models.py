@@ -27,6 +27,9 @@ class Tournament(models.Model):
     def is_active(self):
         return active
 
+    def get_remaining_spots(self):
+        return self.max_players - self.tournament_players.count()
+
     objects = TournamentQuerySet.as_manager()
 
 
