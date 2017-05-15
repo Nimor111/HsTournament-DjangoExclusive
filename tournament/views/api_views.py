@@ -46,8 +46,10 @@ class PlayerList(IsSuperUserMixin, generics.ListCreateAPIView):
 
 
 class PlayerDetail(IsSuperUserMixin, generics.RetrieveUpdateDestroyAPIView):
-    queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    def get_queryset(self):
+        return User.objects.filter(pk=self.kwargs.get('pk'))
 
 
 class TournamentList(IsSuperUserMixin, generics.ListCreateAPIView):

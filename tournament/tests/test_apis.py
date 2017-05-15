@@ -18,12 +18,14 @@ class PlayerAPITests(APITestCase):
 
     def setUp(self):
         self.client = APIClient()
-        self.player = PlayerFactory(battle_tag='1' + faker.word())
+        self.user = UserFactory(is_superuser=True)
+        self.player = PlayerFactory(battle_tag='1' + faker.word(), user=self.user)
         self.tournament = TournamentFactory()
         self.match = MatchFactory()
         self.deck = DeckFactory()
         self.player_m2m= PlayerFactory(tournaments=(self.tournament,), matches=(self.match,),
                                        decks=(self.deck,), battle_tag='2' + faker.word())
+        self.client.force_login(self.player.user)
 
     def test_can_get_all_players(self):
         response = self.client.get(reverse_lazy('tournament:player-list-api'))
@@ -33,7 +35,7 @@ class PlayerAPITests(APITestCase):
 
     def test_can_get_single_player(self):
         response = self.client.get(reverse_lazy('tournament:player-detail-api',
-                                                kwargs={'pk': self.player.pk}))
+                                                kwargs={'pk': self.player.user.pk}))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.player.battle_tag)
         self.assertNotContains(response, self.player_m2m.battle_tag)
@@ -73,7 +75,7 @@ class PlayerAPITests(APITestCase):
         }
 
         response = self.client.put(reverse_lazy('tournament:player-detail-api',
-                                                kwargs={'pk': self.player.pk}),
+                                                kwargs={'pk': self.player.user.pk}),
                                    data=data, format='json')
         # import ipdb; ipdb.set_trace()
         self.player.user.refresh_from_db()
@@ -84,7 +86,7 @@ class PlayerAPITests(APITestCase):
         self.assertEqual(Player.objects.count(), 2)
 
         response = self.client.delete(reverse_lazy('tournament:player-detail-api',
-                                                   kwargs={'pk': self.player.pk}))
+                                                   kwargs={'pk': self.player.user.pk}))
 
         self.assertEqual(response.status_code, 204)
         self.assertEqual(Player.objects.count(), 1)
@@ -96,6 +98,8 @@ class TournamentAPITests(APITestCase):
         self.tournament = TournamentFactory()
         self.tournament2 = TournamentFactory()
         self.client = APIClient()
+        self.user = UserFactory(is_superuser=True)
+        self.client.force_login(self.user)
 
     def test_can_get_all_tournaments(self):
         response = self.client.get(reverse_lazy('tournament:tournament-list-api'))
@@ -158,6 +162,8 @@ class DeckAPITests(APITestCase):
         self.deck = DeckFactory()
         self.deck2 = DeckFactory()
         self.client = APIClient()
+        self.user = UserFactory(is_superuser=True)
+        self.client.force_login(self.user)
 
     def test_can_get_all_decks(self):
         response = self.client.get(reverse_lazy('tournament:deck-list-api'))
@@ -209,6 +215,8 @@ class MatchAPITests(APITestCase):
         self.tournament = TournamentFactory()
         self.match2 = MatchFactory(tournament=self.tournament)
         self.client = APIClient()
+        self.user = UserFactory(is_superuser=True)
+        self.client.force_login(self.user)
 
     def test_can_get_all_matches(self):
         response = self.client.get(reverse_lazy('tournament:match-list-api'))
@@ -259,6 +267,8 @@ class BracketAPITests(APITestCase):
         self.tournament = TournamentFactory()
         self.bracket2 = BracketFactory(tournament=self.tournament)
         self.client = APIClient()
+        self.user = UserFactory(is_superuser=True)
+        self.client.force_login(self.user)
 
     def test_can_get_all_brackets(self):
         response = self.client.get(reverse_lazy('tournament:bracket-list-api'))
