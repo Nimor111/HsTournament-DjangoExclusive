@@ -5,10 +5,13 @@
 #### This one is Django exclusively.
 
 # TODO
-0. Fix API tests to handle permissions
 1. add user profile page - Done, partially
-2. add tournament sign-up page - Done
 3. add deck detail view
-4. available spots to be calculated - Done
 5. add deck create view
-6. anything I invent along the way
+6. add some logic to create matches
+7. anything I invent along the way
+
+# DONE
+Fix API tests to handle permissions
+Add tournament sign-up page
+Available spots to be calculated
