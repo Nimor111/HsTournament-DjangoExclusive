@@ -12,6 +12,6 @@
 7. anything I invent along the way
 
 # DONE
-Fix API tests to handle permissions
-Add tournament sign-up page
-Available spots to be calculated
+1. Fix API tests to handle permissions
+2. Add tournament sign-up page
+3. Available spots to be calculated
