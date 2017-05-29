@@ -22,6 +22,7 @@ from tournament.mixins import ProfileObjectMixin
 
 
 class IndexView(generic.TemplateView):
+    """ Where most of the action happens """
     template_name = 'website/index.html'
 
     def get_context_data(self, **kwargs):
@@ -33,6 +34,7 @@ class IndexView(generic.TemplateView):
 
 
 class RegisterFormView(generic.View):
+    """ Displays form for user registration and saves it to db"""
     template_name = 'website/register.html'
     form_class = PlayerModelForm
     success_url = '/'
@@ -62,6 +64,7 @@ class ProfileUpdateView(LoginRequiredMixin, ProfileObjectMixin, generic.UpdateVi
 
 
 class TournamentDetailView(LoginRequiredMixin, generic.DetailView):
+    """ View details for a specific tournament, description included"""
     model = Tournament
     template_name = 'website/tournament_detail.html'
     login_url = reverse_lazy('login')
@@ -77,6 +80,7 @@ class TournamentDetailView(LoginRequiredMixin, generic.DetailView):
 
 
 class TournamentSignUpView(LoginRequiredMixin, generic.View):
+    """ Use the sign up button to join an existing tournament"""
     model = Tournament
     template_name = 'website/tournament_detail.html'
 
@@ -93,4 +97,5 @@ class TournamentSignUpView(LoginRequiredMixin, generic.View):
 
 
 class Error404(generic.TemplateView):
+    """ If any error 404 occurs"""
     template_name = 'website/error404/html'
