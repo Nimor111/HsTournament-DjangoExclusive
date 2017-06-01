@@ -21,7 +21,7 @@ regularurlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'tournament/(?P<pk>[0-9]+)/$', views.TournamentDetailView.as_view(), name='tournament-detail'),
     url(r'tournament/(?P<pk>[0-9]+)/sign-up/$', views.TournamentSignUpView.as_view(), name='tournament-signup'),
-    url(r'create-deck/$', views.DeckCreateView.as_view(), name='deck-create')
+    url(r'create-deck/$', views.DeckCreateView.as_view(), name='create-deck')
 ]
 
 urlpatterns = apiurlpatterns + regularurlpatterns
