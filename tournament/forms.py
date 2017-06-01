@@ -2,12 +2,18 @@ from django import forms
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 from tournament.models import Player
 
 
 class PlayerModelForm(UserCreationForm):
-    rank = forms.IntegerField(required=False)
+    rank = forms.IntegerField(
+        required=False,
+        validators=[
+            MinValueValidator(0),
+            MaxValueValidator(25)
+        ])
     battle_tag = forms.CharField(max_length=256)
 
     class Meta:

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 from tournament.query import TournamentQuerySet
 
@@ -41,7 +42,13 @@ class Match(models.Model):
 class Player(models.Model):
     user = models.OneToOneField(User)
     tournaments = models.ManyToManyField(Tournament, related_name='tournament_players', blank=True)
-    rank = models.SmallIntegerField(null=True, blank=True)
+    rank = models.SmallIntegerField(
+        null=True,
+        blank=True,
+        validators=[
+            MinValueValidator(0),
+            MaxValueValidator(25)
+        ])
     decks = models.ManyToManyField(Deck, related_name='deck_players', blank=True)
     matches = models.ManyToManyField(Match, related_name='match_players', blank=True)
     battle_tag = models.CharField(max_length=256)
