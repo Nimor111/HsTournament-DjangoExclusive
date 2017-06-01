@@ -8,18 +8,9 @@
 <div class='container'>
     <div class='row'>
         <div class="jumbotron register">
-            <div class="col-md-2"></div>
+            <div class="col-md-1"></div>
             <div class="col-md-6">
                 <h1>Register an account!</h1>
-                {% if form.errors %}
-                    {% for field in form %}
-                        {% for error in field.errors %}
-                            <div class="alert alert-danger">
-                                <strong>{{ error|escape }}</strong>
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
-                {% endif %}
                 <form class="form-inline" method="POST" action="">
                     {% csrf_token %}
                     <div class="col-md-6 form-group">
@@ -40,7 +31,17 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
