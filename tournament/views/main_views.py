@@ -16,6 +16,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from tournament.mixins import ProfileObjectMixin
+from tournament.forms import DeckModelForm
 
 # TODO figure this out
 # from tournament.mixins import NotLoginRequiredMixin
@@ -94,6 +95,20 @@ class TournamentSignUpView(LoginRequiredMixin, generic.View):
         self.request.user.save()
 
         return redirect(self.get_success_url())
+
+
+class DeckCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Deck
+    template_name = 'website/deck_create.html'
+    form_class = DeckModelForm
+
+    def form_valid(self, form):
+        form.instance.save()
+        self.request.user.player.decks.add(form.instance)
+        return super(DeckCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('tournament:index')
 
 
 class Error404(generic.TemplateView):

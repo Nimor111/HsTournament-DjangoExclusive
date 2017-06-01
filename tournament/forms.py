@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-from tournament.models import Player
+from tournament.models import Player, Deck
 
 
 class PlayerModelForm(UserCreationForm):
@@ -27,3 +27,9 @@ class PlayerModelForm(UserCreationForm):
             user.save()
             player = Player.objects.create(user=user, rank=self.cleaned_data['rank'], battle_tag=self.cleaned_data['battle_tag'])
         return user
+
+
+class DeckModelForm(forms.ModelForm):
+    class Meta:
+        model = Deck
+        fields = ('name', 'screenshot')
