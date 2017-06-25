@@ -57,7 +57,6 @@ class PlayerAPITests(APITestCase):
         }
 
         response = self.client.post(reverse_lazy('tournament:player-list-api'), data=data, format='json')
-        # import ipdb; ipdb.set_trace()
         self.assertEqual(response.status_code, 201)
         self.assertEqual(Player.objects.count(), 3)
 
@@ -66,14 +65,14 @@ class PlayerAPITests(APITestCase):
             'username': 'Newname',
             'password': self.player.user.password,
             'player': {
-                'rank': self.player.rank,
+                'rank': 25,
                 'battle_tag': self.player.battle_tag,
                 'tournaments': [],
                 'decks': [],
                 'matches': [],
             }
         }
-
+        # import ipdb; ipdb.set_trace()
         response = self.client.put(reverse_lazy('tournament:player-detail-api',
                                                 kwargs={'pk': self.player.user.pk}),
                                    data=data, format='json')
